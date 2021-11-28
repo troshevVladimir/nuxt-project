@@ -1,14 +1,19 @@
 <template>
   <div class="showcase">
     <div class="showcase__grid">
-      <slot></slot>
+      <card-item />
     </div>
   </div>
 </template>
 
 <script>
+import CardItem from "./CardItem.vue";
+
 export default {
   name: "TheShowcase",
+  components: {
+    "card-item": CardItem,
+  },
 };
 </script>
 

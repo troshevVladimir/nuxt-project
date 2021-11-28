@@ -1,5 +1,5 @@
 <template>
-  <the-showcase>asdasdasd</the-showcase>
+  <the-showcase />
 </template>
 <script>
 import TheShowcase from "../components/TheShowcase.vue";
