@@ -1,0 +1,39 @@
+@font-face {
+	font-family: 'Inter-SemiBold';
+	src: url('/fonts/Inter-SemiBold/Inter-SemiBold.eot');
+	src: url('/fonts/Inter-SemiBold/Inter-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Inter-SemiBold/Inter-SemiBold.svg#Inter-SemiBold') format('svg'),
+    url('/fonts/Inter-SemiBold/Inter-SemiBold.ttf') format('truetype'),
+    url('/fonts/Inter-SemiBold/Inter-SemiBold.woff') format('woff'),
+    url('/fonts/Inter-SemiBold/Inter-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SourceSansPro-Regular';
+	src: url('/fonts/SourceSansPro/SourceSansPro-Regular.eot');
+	src: url('/fonts/SourceSansPro/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg'),
+    url('/fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype'),
+    url('/fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
+    url('/fonts/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SourceSansPro-SemiBold';
+	src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.eot');
+	src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.svg#SourceSansPro-SemiBold') format('svg'),
+    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf') format('truetype'),
+    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.woff') format('woff'),
+    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+}
+
+body {
+  font-family: SourceSansPro-Regular, sans-serif;
+
+  --main-bg-color: brown;
+}
