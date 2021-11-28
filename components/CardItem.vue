@@ -1,5 +1,10 @@
 <template>
   <div class="card">
+    <div class="card__button">
+      <ui-button size="small" status="error" :handler="buttonHandler()"
+        ><svg-icon name="basket"
+      /></ui-button>
+    </div>
     <img class="card__img" src="../assets/img/thumbnail.png" />
     <div class="card__body">
       <div class="card__title">Наименование товара</div>
@@ -13,8 +18,20 @@
 </template>
 
 <script>
+import UIButton from "./ui-kit/UI-Button.vue";
 export default {
   name: "CardItem",
+  components: {
+    "ui-button": UIButton,
+  },
+
+  methods: {
+    buttonHandler() {
+      return function () {
+        console.log("click");
+      };
+    },
+  },
 };
 </script>
 
@@ -22,7 +39,11 @@ export default {
 .card {
   max-width: 332px;
   height: 423px;
-
+  &__button {
+    svg {
+      height: 16px;
+    }
+  }
   &__img {
     width: 100%;
     height: 200px;
