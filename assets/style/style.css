@@ -35,5 +35,11 @@
 body {
   font-family: SourceSansPro-Regular, sans-serif;
 
-  --main-bg-color: brown;
+  --main-bg-color: #e5e5e5;
+  --white-color: #FFFEFB;
+  --gray-color: #EEEEEE;
+  --red-color: #FF8484;
+  --green-color: #7BAE73;
+  --disable-text-color: #B4B4B4;
+;
 }
