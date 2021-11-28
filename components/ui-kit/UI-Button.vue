@@ -11,7 +11,6 @@ export default {
     color: { type: String, required: false, default: "green" },
     status: { type: String, required: true },
     size: { type: String, required: true },
-    handler: { type: Function, required: true },
   },
 
   computed: {
@@ -33,10 +32,6 @@ export default {
           return "ui-button_size_block";
       }
     },
-  },
-
-  methods: {
-    clickHandler() {},
   },
 };
 </script>

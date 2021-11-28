@@ -1,41 +1,40 @@
 @font-face {
-	font-family: 'Inter-SemiBold';
-	src: url('/fonts/Inter-SemiBold/Inter-SemiBold.eot');
-	src: url('/fonts/Inter-SemiBold/Inter-SemiBold.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/Inter-SemiBold/Inter-SemiBold.svg#Inter-SemiBold') format('svg'),
-    url('/fonts/Inter-SemiBold/Inter-SemiBold.ttf') format('truetype'),
-    url('/fonts/Inter-SemiBold/Inter-SemiBold.woff') format('woff'),
-    url('/fonts/Inter-SemiBold/Inter-SemiBold.woff2') format('woff2');
+	font-family: 'Inter';
+	src: url('../fonts/Inter-SemiBold/Inter-SemiBold.eot');
+	src:url('../fonts/Inter-SemiBold/Inter-SemiBold.svg#Inter-SemiBold') format('svg'),
+    url('../fonts/Inter-SemiBold/Inter-SemiBold.ttf') format('truetype'),
+    url('../fonts/Inter-SemiBold/Inter-SemiBold.woff') format('woff'),
+    url('../fonts/Inter-SemiBold/Inter-SemiBold.otf') format('otf');
 	font-weight: 600;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'SourceSansPro-Regular';
-	src: url('/fonts/SourceSansPro/SourceSansPro-Regular.eot');
-	src: url('/fonts/SourceSansPro/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg'),
-    url('/fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype'),
-    url('/fonts/SourceSansPro/SourceSansPro-Regular.woff') format('woff'),
-    url('/fonts/SourceSansPro/SourceSansPro-Regular.woff2') format('woff2');
+	font-family: 'SourceSansPro';
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.eot');
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.svg#SourceSansPro-Regular') format('svg'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf') format('truetype'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.otf') format('otf'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-Regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'SourceSansPro-SemiBold';
-	src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.eot');
-	src: url('/fonts/SourceSansPro/SourceSansPro-SemiBold.svg#SourceSansPro-SemiBold') format('svg'),
-    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.ttf') format('truetype'),
-    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.woff') format('woff'),
-    url('/fonts/SourceSansPro/SourceSansPro-SemiBold.woff2') format('woff2');
+	font-family: 'SourceSansPro';
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.eot');
+	src: url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.svg#SourceSansPro-SemiBold') format('svg'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf') format('truetype'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.otf') format('otf'),
+    url('../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.woff') format('woff');
 	font-weight: 600;
 	font-style: normal;
 }
 
 body {
-  font-family: SourceSansPro-Regular, sans-serif;
+  font-family: SourceSansPro, sans-serif;
+  background-color: #e5e5e5;
 
-  --main-bg-color: #e5e5e5;
   --white-color: #FFFEFB;
   --gray-color: #EEEEEE;
   --red-color: #FF8484;
