@@ -1,13 +1,13 @@
 <template>
-  <div class="select">
+  <div class="select" tabindex="0">
     <div class="select__input">
       <div class="select__input-text">asdasd</div>
       <svg-icon name="arrow-corner" />
     </div>
     <div class="select__dropdown">
-      <div class="select__item">asdasd</div>
-      <div class="select__item">asdasd</div>
-      <div class="select__item">asdasd</div>
+      <div class="select__item" tabindex="0">asdasd</div>
+      <div class="select__item" tabindex="0">asdasd</div>
+      <div class="select__item" tabindex="0">asdasd</div>
     </div>
   </div>
 </template>
@@ -61,6 +61,13 @@ export default {};
     opacity: 0;
     transition: all ease 0.5s;
     z-index: 1;
+
+    &:hover,
+    &:focus {
+      top: calc(100% - 15px);
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &__item {

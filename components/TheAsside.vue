@@ -2,7 +2,7 @@
   <div class="asside">
     <h1 class="asside__h1">Добавление товара</h1>
     <div class="asside__body">
-      <div class="asside__section">
+      <div class="asside__section asside__section_required">
         <label for="title" class="asside__label">Наименование товара</label>
         <input
           type="text"
@@ -20,7 +20,7 @@
           placeholder="Введите описание товара"
         />
       </div>
-      <div class="asside__section">
+      <div class="asside__section asside__section_required">
         <label for="link" class="asside__label">
           Ссылка на изображение товара
         </label>
@@ -31,16 +31,18 @@
           placeholder="Введите ссылку"
         />
       </div>
-      <div class="asside__section">
+      <div class="asside__section asside__section_required">
         <label for="price" class="asside__label">Цена товара</label>
         <input
           type="text"
           id="price"
-          class="asside__input"
+          class="asside__input asside__input_invalid"
           placeholder="Введите цену"
         />
       </div>
-      <ui-button size="block" status="success">Добавить товар</ui-button>
+      <ui-button size="block" status="success" type="subbmit">
+        Добавить товар
+      </ui-button>
     </div>
   </div>
 </template>
@@ -78,6 +80,21 @@ export default {
   &__section {
     margin-bottom: 16px;
     width: 100%;
+
+    &_required {
+      & label {
+        display: flex;
+
+        &::after {
+          display: block;
+          content: "";
+          width: 4px;
+          height: 4px;
+          border-radius: 4px;
+          background-color: var(--red-color);
+        }
+      }
+    }
   }
 
   &__label {
@@ -91,15 +108,22 @@ export default {
   }
 
   &__input {
-    box-sizing: border-box;
     width: 100%;
     padding: 10px 16px;
-    border: none;
+    border: 1px solid transparent;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     font-weight: 400;
     font-size: 12px;
     color: var(--disable-text-color);
+
+    &:focus {
+      background-color: var(--gray-color);
+    }
+
+    &_invalid {
+      border: 1px solid var(--red-color);
+    }
   }
 }
 </style>

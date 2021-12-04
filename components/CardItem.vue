@@ -41,6 +41,7 @@ export default {
 .card-wrapper {
   position: relative;
   max-width: 332px;
+  cursor: pointer;
 }
 
 .card {

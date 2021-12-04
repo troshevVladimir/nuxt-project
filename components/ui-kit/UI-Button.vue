@@ -1,7 +1,7 @@
 <template>
-  <div class="ui-button" :class="[this.statusClass, this.sizeClass]">
+  <button class="ui-button" :class="[this.statusClass, this.sizeClass]">
     <slot />
-  </div>
+  </button>
 </template>
 
 <script>
@@ -42,6 +42,21 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  cursor: pointer;
+  transition: filter ease 0.2s;
+
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 12px;
+
+  &:hover {
+    filter: brightness(80%);
+  }
+
+  &:active,
+  &:focus {
+    filter: brightness(90%);
+  }
 
   &_size_small {
     width: 32px;
@@ -59,10 +74,13 @@ export default {
 
   &_color_gray {
     background-color: var(--gray-color);
+    color: var(--disable-text-color);
+    cursor: not-allowed;
   }
 
   &_color_green {
     background-color: var(--green-color);
+    color: var(--white-color);
   }
 }
 </style>
