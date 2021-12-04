@@ -34,11 +34,13 @@
 body {
   font-family: SourceSansPro, sans-serif;
   background-color: #e5e5e5;
+  color: #3F3F3F;
 
   --white-color: #FFFEFB;
   --gray-color: #EEEEEE;
   --red-color: #FF8484;
   --green-color: #7BAE73;
   --disable-text-color: #B4B4B4;
+  --text-color: #49485E;
 ;
 }
