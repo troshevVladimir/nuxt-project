@@ -1,9 +1,9 @@
 <template>
   <div class="card-wrapper">
     <div class="card__button">
-      <ui-button size="small" status="error"
-        ><svg-icon name="basket"
-      /></ui-button>
+      <ui-button size="small" status="error">
+        <svg-icon name="basket" />
+      </ui-button>
     </div>
     <div class="card">
       <img class="card__img" src="../assets/img/thumbnail.png" />
@@ -40,9 +40,11 @@ export default {
 <style coped lang="scss">
 .card-wrapper {
   position: relative;
-}
-.card {
   max-width: 332px;
+}
+
+.card {
+  max-width: 100%;
   height: 423px;
   background-color: var(--white-color);
   border-radius: 4px;
