@@ -20,5 +20,9 @@ export default {
   display: flex;
   padding: 32px;
   column-gap: 16px;
+
+  @media screen and(max-width: 650px) {
+    flex-direction: column;
+  }
 }
 </style>

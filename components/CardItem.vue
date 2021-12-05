@@ -40,13 +40,14 @@ export default {
 <style coped lang="scss">
 .card-wrapper {
   position: relative;
-  max-width: 332px;
   cursor: pointer;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
-  height: 423px;
+  height: 100%;
   background-color: var(--white-color);
   border-radius: 4px;
   overflow: hidden;
@@ -69,6 +70,9 @@ export default {
   }
 
   &__body {
+    display: flex;
+    flex: 1 auto;
+    flex-direction: column;
     margin: 0 16px 32px;
   }
 
@@ -81,6 +85,7 @@ export default {
   }
 
   &__desc {
+    flex: 1 1 auto;
     margin-bottom: 32px;
     font-weight: 400;
     font-size: 16px;
@@ -88,6 +93,7 @@ export default {
   }
 
   &__price {
+    justify-self: end;
     font-weight: 600;
     font-size: 24px;
     line-height: 30px;

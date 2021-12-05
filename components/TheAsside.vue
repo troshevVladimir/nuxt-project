@@ -60,7 +60,7 @@ export default {
 
 <style scoped lang="scss">
 .asside {
-  width: 332px;
+  min-width: 332px;
 
   &__h1 {
     margin-bottom: 16px;
