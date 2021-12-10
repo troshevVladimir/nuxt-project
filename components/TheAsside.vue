@@ -1,49 +1,74 @@
 <template>
   <div class="asside">
     <h1 class="asside__h1">Добавление товара</h1>
-    <div class="asside__body">
-      <div class="asside__section asside__section_required">
+    <form class="asside__body">
+      <div
+        class="asside__section asside__section_required"
+        :class="{ mb0: !isValidTitle }"
+      >
         <label for="title" class="asside__label">Наименование товара</label>
         <input
+          v-model="title"
           type="text"
           id="title"
           class="asside__input"
           placeholder="Введите наименование товара"
         />
+        <span v-if="!isValidTitle" class="asside__error">
+          Поле является обязательным
+        </span>
       </div>
       <div class="asside__section">
         <label for="desc" class="asside__label">Описание товара</label>
-        <input
-          type="textarea"
+        <textarea
           id="desc"
           class="asside__input asside__input_textarea"
           placeholder="Введите описание товара"
         />
       </div>
-      <div class="asside__section asside__section_required">
+      <div
+        class="asside__section asside__section_required"
+        :class="{ mb0: !isValidLink }"
+      >
         <label for="link" class="asside__label">
           Ссылка на изображение товара
         </label>
         <input
+          v-model="link"
           type="text"
           id="link"
           class="asside__input"
           placeholder="Введите ссылку"
         />
+        <span v-if="!isValidLink" class="asside__error">
+          Поле является обязательным
+        </span>
       </div>
-      <div class="asside__section asside__section_required">
+      <div
+        class="asside__section asside__section_required"
+        :class="{ mb0: !isValidPrice }"
+      >
         <label for="price" class="asside__label">Цена товара</label>
         <input
-          type="text"
+          v-model="price"
+          type="number"
           id="price"
-          class="asside__input asside__input_invalid"
+          class="asside__input"
           placeholder="Введите цену"
         />
+        <span v-if="!isValidPrice" class="asside__error">
+          Поле является обязательным
+        </span>
       </div>
-      <ui-button size="block" status="success" type="subbmit">
+      <ui-button
+        size="block"
+        :status="btnStatus"
+        type="subbmit"
+        @btnClick="submitHandler()"
+      >
         Добавить товар
       </ui-button>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -54,6 +79,75 @@ export default {
   name: "TheAsside",
   components: {
     "ui-button": UIButton,
+  },
+
+  data() {
+    return {
+      title: null,
+      price: null,
+      link: null,
+
+      isValidTitle: false,
+      isValidPrice: false,
+      isValidLink: false,
+
+      isFormValid: false,
+    };
+  },
+
+  methods: {
+    submitHandler() {
+      if (this.isFormValid) {
+        console.log("send");
+      }
+    },
+
+    formValid() {
+      if (this.isValidTitle && this.isValidPrice && this.isValidLink) {
+        this.isFormValid = true;
+      } else {
+        this.isFormValid = false;
+      }
+    },
+  },
+
+  computed: {
+    btnStatus() {
+      if (this.isFormValid) {
+        return "success";
+      }
+      return "disable";
+    },
+  },
+
+  watch: {
+    title: function (val) {
+      if (val) {
+        this.isValidTitle = true;
+      } else {
+        this.isValidTitle = false;
+      }
+      this.formValid();
+    },
+
+    price: function (val) {
+      if (val) {
+        this.isValidPrice = true;
+      } else {
+        this.isValidPrice = false;
+      }
+
+      this.formValid();
+    },
+
+    link: function (val) {
+      if (val) {
+        this.isValidLink = true;
+      } else {
+        this.isValidLink = false;
+      }
+      this.formValid();
+    },
   },
 };
 </script>
@@ -117,6 +211,10 @@ export default {
     font-size: 12px;
     color: var(--disable-text-color);
 
+    &_textarea {
+      resize: vertical;
+    }
+
     &:focus {
       background-color: var(--gray-color);
     }
@@ -124,6 +222,18 @@ export default {
     &_invalid {
       border: 1px solid var(--red-color);
     }
+  }
+
+  &__error {
+    font-size: 8px;
+    line-height: 10px;
+    color: var(--red-color);
+    margin-bottom: 2px;
+    padding-top: 4px;
+  }
+
+  .mb0 {
+    margin-bottom: 0;
   }
 }
 </style>

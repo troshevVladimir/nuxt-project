@@ -1,5 +1,9 @@
 <template>
-  <button class="ui-button" :class="[this.statusClass, this.sizeClass]">
+  <button
+    class="ui-button"
+    :class="[this.statusClass, this.sizeClass]"
+    @click.prevent="clickHandler()"
+  >
     <slot />
   </button>
 </template>
@@ -11,6 +15,12 @@ export default {
     color: { type: String, required: false, default: "green" },
     status: { type: String, required: true },
     size: { type: String, required: true },
+  },
+
+  methods: {
+    clickHandler() {
+      this.$emit("btnClick");
+    },
   },
 
   computed: {
@@ -75,7 +85,6 @@ export default {
   &_color_gray {
     background-color: var(--gray-color);
     color: var(--disable-text-color);
-    cursor: not-allowed;
   }
 
   &_color_green {
