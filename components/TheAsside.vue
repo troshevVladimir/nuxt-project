@@ -21,6 +21,7 @@
       <div class="asside__section">
         <label for="desc" class="asside__label">Описание товара</label>
         <textarea
+          v-model="description"
           id="desc"
           class="asside__input asside__input_textarea"
           placeholder="Введите описание товара"
@@ -74,6 +75,7 @@
 
 <script>
 import UIButton from "./ui-kit/UI-Button.vue";
+import { mapMutations } from "vuex";
 
 export default {
   name: "TheAsside",
@@ -86,6 +88,7 @@ export default {
       title: null,
       price: null,
       link: null,
+      description: null,
 
       isValidTitle: false,
       isValidPrice: false,
@@ -96,9 +99,19 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["addProduct"]),
+
     submitHandler() {
       if (this.isFormValid) {
-        console.log("send");
+        this.$store.commit("addProduct", {
+          title: this.title,
+          description: this.description,
+          price: Number(this.price),
+          link: this.link,
+          id: this.$store.state.products.length,
+        });
+
+        this.description = this.title = this.price = this.link = null;
       }
     },
 

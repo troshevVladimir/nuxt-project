@@ -6,8 +6,6 @@
     </div>
     <div class="select__dropdown">
       <div class="select__item" tabindex="0">asdasd</div>
-      <div class="select__item" tabindex="0">asdasd</div>
-      <div class="select__item" tabindex="0">asdasd</div>
     </div>
   </div>
 </template>
@@ -20,6 +18,7 @@ export default {};
 .select {
   position: relative;
   display: inline-block;
+  width: fit-content;
   color: var(--disable-text-color);
 
   &:hover .select__dropdown {

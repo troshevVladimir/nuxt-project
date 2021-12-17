@@ -1,6 +1,6 @@
 <template>
   <div class="card-wrapper">
-    <div class="card__button">
+    <div class="card__button" @click="buttonClickHandler()">
       <ui-button size="small" status="error">
         <svg-icon name="basket" />
       </ui-button>
@@ -8,12 +8,11 @@
     <div class="card">
       <img class="card__img" src="../assets/img/thumbnail.png" />
       <div class="card__body">
-        <div class="card__title">Наименование товара</div>
+        <div class="card__title">{{ this.title }}</div>
         <div class="card__desc">
-          Довольно-таки интересное описание товара в несколько строк.
-          Довольно-таки интересное описание товара в несколько строк
+          {{ this.description }}
         </div>
-        <div class="card__price">10 000 руб.</div>
+        <div class="card__price">{{ this.price }}руб.</div>
       </div>
     </div>
   </div>
@@ -21,17 +20,36 @@
 
 <script>
 import UIButton from "./ui-kit/UI-Button.vue";
+import { mapMutations } from "vuex";
 export default {
   name: "CardItem",
+
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    id: {
+      type: Number,
+    },
+  },
+
   components: {
     "ui-button": UIButton,
   },
 
   methods: {
-    buttonHandler() {
-      return function () {
-        console.log("click");
-      };
+    ...mapMutations,
+    buttonClickHandler() {
+      this.$store.commit("removeProduct", this.id);
     },
   },
 };
