@@ -1,19 +1,44 @@
 <template>
   <div class="select" tabindex="0">
     <div class="select__input">
-      <div class="select__input-text">asdasd</div>
+      <div class="select__input-text">{{ this.currentProp }}</div>
       <svg-icon name="arrow-corner" />
     </div>
     <div class="select__dropdown">
-      <div class="select__item" tabindex="0">asdasd</div>
-      <div class="select__item" tabindex="0">asdasd</div>
-      <div class="select__item" tabindex="0">asdasd</div>
+      <div
+        v-for="item in filterProps"
+        :key="item.id"
+        class="select__item"
+        tabindex="0"
+        @click="clickHandler(item)"
+      >
+        {{ item.name }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "UI-Select",
+  data() {
+    return {
+      currentProp: "Не отсортировано",
+    };
+  },
+  emits: ["selected"],
+  props: {
+    filterProps: {
+      type: [Array, String],
+    },
+  },
+  methods: {
+    clickHandler(item) {
+      this.currentProp = item.name;
+      this.$emit("selected", item.id);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
