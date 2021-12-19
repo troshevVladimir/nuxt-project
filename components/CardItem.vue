@@ -6,7 +6,7 @@
       </ui-button>
     </div>
     <div class="card">
-      <img class="card__img" src="../assets/img/thumbnail.png" />
+      <img class="card__img" :src="this.link" />
       <div class="card__body">
         <div class="card__title">{{ this.title }}</div>
         <div class="card__desc">
@@ -35,6 +35,10 @@ export default {
     },
     price: {
       type: Number,
+      required: true,
+    },
+    link: {
+      type: String,
       required: true,
     },
     id: {
