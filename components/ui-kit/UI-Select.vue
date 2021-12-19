@@ -45,6 +45,7 @@ export default {
 .select {
   position: relative;
   display: inline-block;
+  width: fit-content;
   color: var(--disable-text-color);
 
   &:hover .select__dropdown {

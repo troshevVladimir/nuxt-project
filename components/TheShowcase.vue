@@ -61,12 +61,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.empty {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 35px;
+}
 .showcase {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 
   &__filter {
-    justify-self: end;
+    align-self: end;
 
     @media screen and(max-width: 650px) {
       flex-direction: column;
