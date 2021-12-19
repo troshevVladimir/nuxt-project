@@ -44,7 +44,7 @@ export default {
 <style scoped lang="scss">
 .select {
   position: relative;
-  display: inline-block;
+  display: block;
   width: fit-content;
   color: var(--disable-text-color);
 
@@ -87,6 +87,7 @@ export default {
     opacity: 0;
     transition: all ease 0.5s;
     z-index: 1;
+    white-space: nowrap;
 
     &:hover,
     &:focus {

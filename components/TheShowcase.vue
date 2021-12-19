@@ -94,24 +94,16 @@ export default {
   &__filter {
     align-self: end;
 
-    @media screen and(max-width: 650px) {
+    @media screen and(max-width: 940px) {
       flex-direction: column;
       margin-top: 16px;
     }
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 16px;
-
-    @media screen and(max-width: 1400px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and(max-width: 940px) {
-      grid-template-columns: repeat(1, 1fr);
-    }
+    flex-wrap: wrap;
   }
 }
 </style>

@@ -63,12 +63,24 @@ export default {
 .card-wrapper {
   position: relative;
   cursor: pointer;
+  width: 100%;
+
+  @media screen and (min-width: 600px) {
+    max-width: calc(100% / 2 - 1 * 16px / 2);
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: calc(100% / 3 - 2 * 16px / 3);
+  }
+
+  @media screen and (min-width: 1500px) {
+    max-width: calc(100% / 5 - 4 * 16px / 5);
+  }
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   height: 100%;
   background-color: var(--white-color);
   border-radius: 4px;
@@ -104,6 +116,9 @@ export default {
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__desc {
@@ -112,6 +127,11 @@ export default {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
+    // Ограничение по количеству строк
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 
   &__price {
