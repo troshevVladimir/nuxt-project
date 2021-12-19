@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <div class="empty" v-if="productArray.length === 0">
+  <transition name="empty-store" mode="out-in">
+    <div class="empty" v-if="productArray.length === 0" key="empty">
       Добавте товары. Сейчас список товаров пуст
     </div>
-    <div class="showcase" v-else>
+    <div class="showcase" v-else key="fully">
       <ui-select
         class="showcase__filter"
         :filterProps="addFilterProps()"
         @selected="filterApply($event)"
       />
-      <div class="showcase__grid">
+      <transition-group name="card-item" tag="div" class="showcase__grid">
         <card-item
           v-for="prod in productArray"
           :key="prod.id"
@@ -19,9 +19,9 @@
           :link="prod.link"
           :id="prod.id"
         />
-      </div>
+      </transition-group>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -61,12 +61,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.card-item-enter-active,
+.card-item-leave-active,
+.empty-store-enter-active,
+.empty-store-leave-active {
+  transition: all ease 1s;
+}
+
+.card-item-leave-to,
+.empty-store-leave-to,
+.card-item-enter,
+.empty-store-enter {
+  opacity: 0;
+}
+
+.card-item-move {
+  transition: all ease 0.3s;
+}
+
 .empty {
   margin-bottom: 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 35px;
 }
+
 .showcase {
   display: flex;
   flex-direction: column;
