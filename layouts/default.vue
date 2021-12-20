@@ -18,11 +18,11 @@ export default {
 <style scoped lang="scss">
 .container {
   display: flex;
-  padding: 32px;
   column-gap: 16px;
+  flex-direction: column;
 
-  @media screen and(max-width: 650px) {
-    flex-direction: column;
+  @media screen and (min-width: 940px) {
+    flex-direction: row;
   }
 }
 </style>
