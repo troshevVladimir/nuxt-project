@@ -16,12 +16,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~/assets/SCSS/variables.scss";
+
 .container {
   display: flex;
   column-gap: 16px;
   flex-direction: column;
 
-  @media screen and (min-width: 940px) {
+  @media screen and (min-width: $tablet) {
     flex-direction: row;
   }
 }
