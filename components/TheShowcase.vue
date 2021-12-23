@@ -18,6 +18,7 @@
           :price="prod.price"
           :link="prod.link"
           :id="prod.id"
+          @cardClick="toProductPage(prod.id)"
         />
       </transition-group>
     </div>
@@ -48,6 +49,10 @@ export default {
     },
     filterApply(id) {
       this.$store.commit("sortProducts", id);
+    },
+
+    toProductPage(id) {
+      this.$router.push(`/product/${id}`);
     },
   },
 

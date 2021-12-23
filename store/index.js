@@ -6,6 +6,14 @@ export const getters = {
   getProducts(state) {
     return state.products;
   },
+  getProduct(state) {
+    return function (id) {
+      const product = state.products.find((el) => {
+        return el.id == id;
+      });
+      return product;
+    };
+  },
 };
 
 export const mutations = {
