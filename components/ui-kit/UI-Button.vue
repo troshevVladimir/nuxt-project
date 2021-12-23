@@ -38,6 +38,8 @@ export default {
       switch (this.size) {
         case "small":
           return "ui-button_size_small";
+        case "normal":
+          return "ui-button_size_normal";
         case "block":
           return "ui-button_size_block";
       }
@@ -71,6 +73,10 @@ export default {
   &_size_small {
     width: 32px;
     height: 32px;
+  }
+
+  &_size_normal {
+    padding: 10px 20px;
   }
 
   &_size_block {
