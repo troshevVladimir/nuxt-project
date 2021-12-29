@@ -3,6 +3,12 @@ export const state = () => ({
 });
 
 export const getters = {
+  getNextId(state) {
+    if (state.products.length) {
+      return state.products[state.products.length - 1].id + 1;
+    }
+    return 0;
+  },
   getProducts(state) {
     return state.products;
   },
@@ -14,18 +20,35 @@ export const getters = {
       return product;
     };
   },
+  getProductsFromLocStor() {
+    return JSON.parse(localStorage.getItem("products"));
+  },
 };
 
 export const mutations = {
+  addProductsFromLocStor(state, productsFromLockStor) {
+    state.products = state.products.concat(productsFromLockStor);
+  },
+
   addProduct(state, payload) {
     const { title, description, price, link, id } = payload;
-    state.products.push({
+    const productObject = {
       title,
       description,
       price,
       link,
       id,
-    });
+    };
+    state.products.push(productObject);
+
+    if (localStorage.getItem("products")) {
+      const existInLocalStorage = JSON.parse(localStorage.getItem("products"));
+      existInLocalStorage.push(productObject);
+      const newInLocalStorage = JSON.stringify(existInLocalStorage);
+      localStorage.setItem("products", newInLocalStorage);
+    } else {
+      localStorage.setItem("products", JSON.stringify([productObject]));
+    }
   },
 
   removeProduct(state, id) {
@@ -33,6 +56,11 @@ export const mutations = {
       return el.id == id;
     });
     state.products.splice(elIdToRemove, 1);
+
+    const existInLocalStorage = JSON.parse(localStorage.getItem("products"));
+    existInLocalStorage.splice(elIdToRemove, 1);
+    const newInLocalStorage = JSON.stringify(existInLocalStorage);
+    localStorage.setItem("products", newInLocalStorage);
   },
 
   sortProducts(state, id) {

@@ -1,6 +1,6 @@
 <template>
   <transition name="empty-store" mode="out-in">
-    <div class="empty" v-if="productArray.length === 0" key="empty">
+    <div class="empty" v-if="this.getProducts.length === 0" key="empty">
       Добавте товары. Сейчас список товаров пуст
     </div>
     <div class="showcase" v-else key="fully">
@@ -11,7 +11,7 @@
       />
       <transition-group name="card-item" tag="div" class="showcase__grid">
         <card-item
-          v-for="prod in productArray"
+          v-for="prod in this.productArray()"
           :key="prod.id"
           :title="prod.title"
           :description="prod.description"
@@ -28,17 +28,20 @@
 <script>
 import CardItem from "./CardItem.vue";
 import UISelect from "../components/ui-kit/UI-Select.vue";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "TheShowcase",
+  data() {
+    return {};
+  },
   components: {
     "card-item": CardItem,
     "ui-select": UISelect,
   },
 
   methods: {
-    ...mapMutations(["sortProducts"]),
+    ...mapMutations(["sortProducts", "addProductsFromLocStor"]),
     addFilterProps() {
       return [
         { name: "По возпростанию цены", id: 0 },
@@ -54,13 +57,22 @@ export default {
     toProductPage(id) {
       this.$router.push(`/product/${id}`);
     },
+
+    productArray() {
+      if (this.getProducts) {
+        return this.getProducts;
+      }
+
+      return this.productArrayAfterUpdateFromLocalStorage;
+    },
   },
 
   computed: {
-    ...mapGetters(["getProducts"]),
-    productArray() {
-      return this.getProducts;
-    },
+    ...mapGetters(["getProducts", "getProductsFromLocStor"]),
+  },
+
+  mounted() {
+    this.addProductsFromLocStor(this.getProductsFromLocStor);
   },
 };
 </script>
