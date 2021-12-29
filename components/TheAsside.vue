@@ -166,8 +166,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~/assets/SCSS/variables.scss";
 .asside {
   min-width: 332px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 0;
+  }
 
   &__h1 {
     margin-bottom: 16px;
