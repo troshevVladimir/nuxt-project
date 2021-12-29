@@ -75,7 +75,7 @@
 
 <script>
 import UIButton from "./ui-kit/UI-Button.vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "TheAsside",
@@ -108,7 +108,7 @@ export default {
           description: this.description,
           price: Number(this.price),
           link: this.link,
-          id: this.$store.state.products.length,
+          id: this.getNextId,
         });
 
         this.description = this.title = this.price = this.link = null;
@@ -125,12 +125,17 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["getNextId"]),
     btnStatus() {
       if (this.isFormValid) {
         return "success";
       }
       return "disable";
     },
+  },
+
+  mounted() {
+    console.log(this.getNextId);
   },
 
   watch: {

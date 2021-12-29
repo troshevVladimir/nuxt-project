@@ -1,5 +1,5 @@
 <template>
-  <div class="card-wrapper">
+  <div class="card-wrapper" @click="cardClickHandler()">
     <div class="card__button" @click="buttonClickHandler()">
       <ui-button size="small" status="error">
         <svg-icon name="basket" />
@@ -52,6 +52,9 @@ export default {
 
   methods: {
     ...mapMutations,
+    cardClickHandler() {
+      this.$emit("cardClick");
+    },
     buttonClickHandler() {
       this.$store.commit("removeProduct", this.id);
     },

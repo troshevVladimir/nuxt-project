@@ -89,7 +89,7 @@ export default {
   display: flex;
   align-items: center;
   max-width: 500px;
-  height: 300px;
+  max-height: 300px;
   margin-bottom: 20px;
   overflow: hidden;
 
