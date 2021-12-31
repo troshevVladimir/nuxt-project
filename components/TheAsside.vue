@@ -134,10 +134,6 @@ export default {
     },
   },
 
-  mounted() {
-    console.log(this.getNextId);
-  },
-
   watch: {
     title: function (val) {
       if (val) {

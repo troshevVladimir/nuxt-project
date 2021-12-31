@@ -48,10 +48,6 @@ export default {
     "ui-button": uiButton,
   },
   methods: {
-    imageHref() {
-      return "asdfasdf";
-    },
-
     currentID() {
       return this.$route.params.id;
     },

@@ -11,7 +11,7 @@
       />
       <transition-group name="card-item" tag="div" class="showcase__grid">
         <card-item
-          v-for="prod in this.productArray()"
+          v-for="prod in productArray()"
           :key="prod.id"
           :title="prod.title"
           :description="prod.description"
@@ -59,11 +59,7 @@ export default {
     },
 
     productArray() {
-      if (this.getProducts) {
-        return this.getProducts;
-      }
-
-      return this.productArrayAfterUpdateFromLocalStorage;
+      return this.getProducts;
     },
   },
 

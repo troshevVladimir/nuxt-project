@@ -1,6 +1,6 @@
 <template>
   <div class="card-wrapper" @click="cardClickHandler()">
-    <div class="card__button" @click="buttonClickHandler()">
+    <div class="card__button" @click.stop="buttonClickHandler()">
       <ui-button size="small" status="error">
         <svg-icon name="basket" />
       </ui-button>

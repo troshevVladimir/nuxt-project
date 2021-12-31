@@ -27,7 +27,9 @@ export const getters = {
 
 export const mutations = {
   addProductsFromLocStor(state, productsFromLockStor) {
-    state.products = state.products.concat(productsFromLockStor);
+    if (!state.products.length && productsFromLockStor) {
+      this.state.products = state.products.concat(productsFromLockStor);
+    }
   },
 
   addProduct(state, payload) {
