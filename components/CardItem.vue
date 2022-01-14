@@ -6,57 +6,42 @@
       </ui-button>
     </div>
     <div class="card">
-      <img class="card__img" :src="this.link" />
+      <img class="card__img" :src="this.content.link" />
       <div class="card__body">
-        <div class="card__title">{{ this.title }}</div>
+        <div class="card__title">{{ this.content.title }}</div>
         <div class="card__desc">
-          {{ this.description }}
+          {{ this.content.description }}
         </div>
-        <div class="card__price">{{ this.price }}руб.</div>
+        <div class="card__price">{{ this.content.price }}руб.</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import UIButton from "./ui-kit/UI-Button.vue";
-import { mapMutations } from "vuex";
+import UIButton from './ui-kit/UI-Button.vue';
+import { mapMutations } from 'vuex';
 export default {
-  name: "CardItem",
+  name: 'CardItem',
 
   props: {
-    title: {
-      type: String,
+    content: {
+      type: Object,
       required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    link: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: Number,
     },
   },
 
   components: {
-    "ui-button": UIButton,
+    'ui-button': UIButton,
   },
 
   methods: {
     ...mapMutations,
     cardClickHandler() {
-      this.$emit("cardClick");
+      this.$emit('cardClick');
     },
     buttonClickHandler() {
-      this.$store.commit("removeProduct", this.id);
+      this.$store.commit('removeProduct', this.id);
     },
   },
 };

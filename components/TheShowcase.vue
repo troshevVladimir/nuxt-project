@@ -13,11 +13,7 @@
         <card-item
           v-for="prod in productArray()"
           :key="prod.id"
-          :title="prod.title"
-          :description="prod.description"
-          :price="prod.price"
-          :link="prod.link"
-          :id="prod.id"
+          :content="getContent(prod)"
           @cardClick="toProductPage(prod.id)"
         />
       </transition-group>
@@ -26,32 +22,32 @@
 </template>
 
 <script>
-import CardItem from "./CardItem.vue";
-import UISelect from "../components/ui-kit/UI-Select.vue";
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import CardItem from './CardItem.vue';
+import UISelect from '../components/ui-kit/UI-Select.vue';
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
-  name: "TheShowcase",
+  name: 'TheShowcase',
   data() {
     return {};
   },
   components: {
-    "card-item": CardItem,
-    "ui-select": UISelect,
+    'card-item': CardItem,
+    'ui-select': UISelect,
   },
 
   methods: {
-    ...mapMutations(["sortProducts", "addProductsFromLocStor"]),
+    ...mapMutations(['sortProducts', 'addProductsFromLocStor']),
     addFilterProps() {
       return [
-        { name: "По возпростанию цены", id: 0 },
-        { name: "По убыванию цены", id: 1 },
-        { name: "По названию", id: 2 },
-        { name: "По названию обратно", id: 3 },
+        { name: 'По возпростанию цены', id: 0 },
+        { name: 'По убыванию цены', id: 1 },
+        { name: 'По названию', id: 2 },
+        { name: 'По названию обратно', id: 3 },
       ];
     },
     filterApply(id) {
-      this.$store.commit("sortProducts", id);
+      this.$store.commit('sortProducts', id);
     },
 
     toProductPage(id) {
@@ -61,10 +57,19 @@ export default {
     productArray() {
       return this.getProducts;
     },
+    getContent(prod) {
+      return {
+        title: prod.title,
+        description: prod.description,
+        price: prod.price,
+        link: prod.link,
+        id: prod.id,
+      };
+    },
   },
 
   computed: {
-    ...mapGetters(["getProducts", "getProductsFromLocStor"]),
+    ...mapGetters(['getProducts', 'getProductsFromLocStor']),
   },
 
   mounted() {
@@ -74,7 +79,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "~/assets/SCSS/variables.scss";
+@import '~/assets/SCSS/variables.scss';
 
 .card-item-enter-active,
 .card-item-leave-active,
