@@ -37,7 +37,13 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['sortProducts', 'addProductsFromLocStor']),
+    ...mapMutations([
+      'sortProductsPriceUp',
+      'sortProductsPriceDwn',
+      'sortProductsTitleUp',
+      'sortProductsTitleDwn',
+      'addProductsFromLocStor',
+    ]),
     addFilterProps() {
       return [
         { name: 'По возпростанию цены', id: 0 },
@@ -47,7 +53,21 @@ export default {
       ];
     },
     filterApply(id) {
-      this.$store.commit('sortProducts', id);
+      if (id === 0) {
+        this.$store.commit('sortProductsPriceUp');
+      }
+
+      if (id === 1) {
+        this.$store.commit('sortProductsPriceDwn');
+      }
+
+      if (id === 2) {
+        this.$store.commit('sortProductsTitleUp');
+      }
+
+      if (id === 3) {
+        this.$store.commit('sortProductsTitleDwn');
+      }
     },
 
     toProductPage(id) {

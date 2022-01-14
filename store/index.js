@@ -21,7 +21,7 @@ export const getters = {
     };
   },
   getProductsFromLocStor() {
-    return JSON.parse(localStorage.getItem("products"));
+    return JSON.parse(localStorage.getItem('products'));
   },
 };
 
@@ -43,13 +43,13 @@ export const mutations = {
     };
     state.products.push(productObject);
 
-    if (localStorage.getItem("products")) {
-      const existInLocalStorage = JSON.parse(localStorage.getItem("products"));
+    if (localStorage.getItem('products')) {
+      const existInLocalStorage = JSON.parse(localStorage.getItem('products'));
       existInLocalStorage.push(productObject);
       const newInLocalStorage = JSON.stringify(existInLocalStorage);
-      localStorage.setItem("products", newInLocalStorage);
+      localStorage.setItem('products', newInLocalStorage);
     } else {
-      localStorage.setItem("products", JSON.stringify([productObject]));
+      localStorage.setItem('products', JSON.stringify([productObject]));
     }
   },
 
@@ -59,60 +59,34 @@ export const mutations = {
     });
     state.products.splice(elIdToRemove, 1);
 
-    const existInLocalStorage = JSON.parse(localStorage.getItem("products"));
+    const existInLocalStorage = JSON.parse(localStorage.getItem('products'));
     existInLocalStorage.splice(elIdToRemove, 1);
     const newInLocalStorage = JSON.stringify(existInLocalStorage);
-    localStorage.setItem("products", newInLocalStorage);
+    localStorage.setItem('products', newInLocalStorage);
   },
 
-  sortProducts(state, id) {
-    let sortFunc;
-    switch (id) {
-      case 0: // По возпростанию цены
-        sortFunc = (prev, next) => {
-          if (prev.price > next.price) {
-            return 1;
-          }
-          if (prev.price < next.price) {
-            return -1;
-          }
-          return 0;
-        };
-        break;
-      case 1: // По убыванию цены
-        sortFunc = (prev, next) => {
-          if (prev.price > next.price) {
-            return -1;
-          }
-          if (prev.price < next.price) {
-            return 1;
-          }
-          return 0;
-        };
-        break;
-      case 2: // По названию
-        sortFunc = (prev, next) => {
-          if (prev.title > next.title) {
-            return -1;
-          }
-          if (prev.title < next.title) {
-            return 1;
-          }
-          return 0;
-        };
-        break;
-      case 3: // По названию обратно
-        sortFunc = (prev, next) => {
-          if (prev.title > next.title) {
-            return 1;
-          }
-          if (prev.title < next.title) {
-            return -1;
-          }
-          return 0;
-        };
-        break;
-    }
-    this.state.products = state.products.sort(sortFunc);
+  sortProductsTitleUp(state) {
+    this.state.products = state.products.sort((prev, next) => {
+      if (prev.title < next.title) return -1;
+      if (prev.title === next.title) return 0;
+      return 1;
+    });
+  },
+  sortProductsTitleDwn(state) {
+    this.state.products = state.products.sort((prev, next) => {
+      if (prev.title < next.title) return 1;
+      if (prev.title === next.title) return 0;
+      return -1;
+    });
+  },
+  sortProductsPriceUp(state) {
+    this.state.products = state.products.sort((prev, next) => {
+      return prev.price - next.price;
+    });
+  },
+  sortProductsPriceDwn(state) {
+    this.state.products = state.products.sort((prev, next) => {
+      return next.price - prev.price;
+    });
   },
 };
