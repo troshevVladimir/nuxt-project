@@ -1,7 +1,7 @@
 <template>
   <div class="asside">
     <h1 class="asside__h1">Добавление товара</h1>
-    <form class="asside__body" ref="form">
+    <form class="asside__body">
       <div
         class="asside__section asside__section_required"
         :class="{ mb0: !isValidTitle }"
@@ -74,13 +74,13 @@
 </template>
 
 <script>
-import UIButton from './ui-kit/UI-Button.vue';
-import { mapMutations, mapGetters } from 'vuex';
+import UIButton from "./ui-kit/UI-Button.vue";
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
-  name: 'TheAsside',
+  name: "TheAsside",
   components: {
-    'ui-button': UIButton,
+    "ui-button": UIButton,
   },
 
   data() {
@@ -99,18 +99,19 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['addProduct']),
+    ...mapMutations(["addProduct"]),
 
     submitHandler() {
       if (this.isFormValid) {
-        this.$store.commit('addProduct', {
+        this.$store.commit("addProduct", {
           title: this.title,
           description: this.description,
           price: Number(this.price),
           link: this.link,
           id: this.getNextId,
         });
-        this.$refs.form.reset();
+
+        this.description = this.title = this.price = this.link = null;
       }
     },
 
@@ -124,12 +125,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getNextId']),
+    ...mapGetters(["getNextId"]),
     btnStatus() {
       if (this.isFormValid) {
-        return 'success';
+        return "success";
       }
-      return 'disable';
+      return "disable";
     },
   },
 
@@ -166,7 +167,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '~/assets/SCSS/variables.scss';
+@import "~/assets/SCSS/variables.scss";
 .asside {
   min-width: 332px;
   margin-bottom: 20px;
@@ -200,7 +201,7 @@ export default {
 
         &::after {
           display: block;
-          content: '';
+          content: "";
           width: 4px;
           height: 4px;
           border-radius: 4px;
