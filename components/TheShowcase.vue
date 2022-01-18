@@ -133,24 +133,14 @@ export default {
 
   &__filter {
     align-self: end;
-
-    @media screen and(max-width: $mobile) {
-      flex-direction: column;
-      margin-top: 16px;
-    }
+    flex-direction: column;
+    margin-top: 16px;
   }
 
   &__grid {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-
-    @media screen and(max-width: $desktop) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and(max-width: $tablet) {
-      grid-template-columns: repeat(1, 1fr);
-    }
   }
 }
 </style>

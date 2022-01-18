@@ -48,21 +48,23 @@ export default {
 </script>
 
 <style coped lang="scss">
+@import '~/assets/SCSS/variables.scss';
+
 .card-wrapper {
   position: relative;
   cursor: pointer;
-  width: 100%;
+  min-width: 100%;
 
   @media screen and (min-width: 600px) {
-    max-width: calc(100% / 2 - 1 * 16px / 2);
+    min-width: calc(100% / 2 - 1 * 16px / 2);
   }
 
   @media screen and (min-width: 1200px) {
-    max-width: calc(100% / 3 - 2 * 16px / 3);
+    min-width: calc(100% / 3 - 2 * 16px / 3);
   }
 
   @media screen and (min-width: 1500px) {
-    max-width: calc(100% / 5 - 4 * 16px / 5);
+    min-width: calc(100% / 5 - 4 * 16px / 5);
   }
 }
 
